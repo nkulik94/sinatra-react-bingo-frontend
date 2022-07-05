@@ -1,7 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from '../context/user';
 import { BoardContext } from "../context/board";
+import { Card } from 'react-bootstrap'
 import BingoBoard from "./BingoBoard";
 
 function Play({ boards }) {
@@ -32,9 +33,14 @@ function Play({ boards }) {
     
     if (!boardObj.board) return <p className="msg">Please <Link to="/all-boards">select a board</Link> or click <a href="#" onClick={handleRandomBoard} >here</a> to get a random board</p>
     console.log(boardObj.board)
+    
     return (
         <div className="big-board">
-            <BingoBoard layout={boardObj.board.board.layout} />
+            <Card>
+                <Card.Body>
+                    <BingoBoard layout={boardObj.board.board.layout.split(' ')} bgColor={'white'} />
+                </Card.Body>
+            </Card>
         </div>
     )
 }

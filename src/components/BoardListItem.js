@@ -10,7 +10,7 @@ function BoardListItem( { board, highScores } ) {
             <Card>
                 <Card.Title>Board Number {board.id}</Card.Title>
                 <Card.Body>
-                    <BingoBoard layout={layout}/>
+                    <BingoBoard layout={layout} bgColor={'white'} />
                     <Card.Header>{highScores[0]}</Card.Header>
                     <ListGroup>
                         <ListGroup.Item>Fewest turns to full: {highScores[1][0]}</ListGroup.Item>

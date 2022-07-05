@@ -1,11 +1,10 @@
 import React from 'react';
 
-function BingoBoard( { layout } ) {
-    const layoutArr = layout.split(' ')
+function BingoBoard( { layout, bgColor } ) {
 
     return (
         <div className="grid-container">
-            {layoutArr.map(num => <div className="grid-item" key={num} >{num}</div>)}
+            {layout.map(num => <div className="grid-item" key={num} style={{backgroundColor: bgColor}}>{num}</div>)}
         </div>
     )
 }

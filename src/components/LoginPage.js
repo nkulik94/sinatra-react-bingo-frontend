@@ -22,7 +22,6 @@ function LoginPage() {
         e.preventDefault()
         const inputData = formInfo.formData
         userObj.getAndSetUser(formInfo.formData, () => handleError(inputData, formInfo.setFormData))
-        console.log(userObj.user)
         formInfo.resetForm()
     }
 

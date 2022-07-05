@@ -43,8 +43,9 @@ header {
   border: 1px solid black
 }
 
-.big-board .grid-container {
+.big-board {
   width: 40%;
+  margin: auto;
 }
 
 .board-list {
