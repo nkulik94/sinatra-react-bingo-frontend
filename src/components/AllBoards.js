@@ -11,10 +11,13 @@ function AllBoards() {
     }, [])
 
     return (
-        <div>
-            <h1 onClick={() => console.log(boards)}>All Boards</h1>
+        <div style={{textAlign: 'center'}}>
+            <h1 onClick={() => console.log(boards)}>Boards and Scores</h1>
             <div className="board-list">
-            {boards.map(board => <BoardListItem board={board} key={board.id} />)}
+            {boards.map(board => {
+                const highScores = ['High Scores For This Board', [board.full_high_score, board.x_high_score, board.line_high_score]]
+                return <BoardListItem board={board} highScores={highScores} key={board.id} />
+            })}
             </div>
         </div>
     )
