@@ -8,6 +8,7 @@ function BoardListItem( { board, highScores } ) {
     return (
         <div className='board-list-item'>
             <Card>
+                <Card.Title>Board Number {board.id}</Card.Title>
                 <Card.Body>
                     <BingoBoard layout={layout}/>
                     <Card.Header>{highScores[0]}</Card.Header>
