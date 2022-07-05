@@ -1,37 +1,32 @@
-import React, { useState, useContext } from 'react';
-import { UserContext } from '../context/user';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 
-function LoginForm() {
-    const userObj = useContext(UserContext)
-    
+function LoginForm( { handleSubmit, displayError } ) {
     
     const [formData, setFormData] = useState({
         username: '',
         password: ''
     })
-    const [displayError, setError] = useState(false)
 
     function handleForm(e) {
         setFormData({...formData, [e.target.name]: e.target.value})
     }
 
-    function handleError() {
-        setError(true)
-        setTimeout(() => setError(false), 3000)
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault()
-        userObj.getAndSetUser(formData, handleError)
+    function resetForm() {
         setFormData({
             username: '',
             password: ''
         })
     }
 
+    const formInfo = {
+        formData,
+        setFormData,
+        resetForm
+    }
+
     return (
-        <Form className='account-form' onSubmit={handleSubmit}>
+        <Form className='account-form' onSubmit={e => handleSubmit(e, formInfo)}>
             <Form.Group className='mb-3'>
                 <Form.Label htmlFor='username'>Username</Form.Label>
                 <Form.Control 
