@@ -5,7 +5,7 @@ import BoardListItem from "./BoardListItem";
 
 function UserBoards() {
     const user = useContext(UserContext).user
-    if (!user) return <p className="login-msg">Please <Link to='/'>log in</Link> to view your boards</p>
+    if (!user) return <p className="msg">Please <Link to='/'>log in</Link> to view your boards</p>
     const boards = user.played_boards
     
     // console.log(user)

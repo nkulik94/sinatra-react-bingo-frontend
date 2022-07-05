@@ -1,14 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import BoardListItem from "./BoardListItem";
 
-function AllBoards() {
-    const [boards, setBoards] = useState([])
-
-    useEffect(() => {
-        fetch('http://localhost:4000/boards')
-            .then(r => r.json())
-            .then(boards => setBoards(boards))
-    }, [])
+function AllBoards({ boards }) {
 
     return (
         <div style={{textAlign: 'center'}}>

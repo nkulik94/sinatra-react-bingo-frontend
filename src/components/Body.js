@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Route, Switch } from "react-router-dom";
 import Home from "./Home";
 import UserBoards from "./UserBoards";
@@ -6,6 +6,14 @@ import AllBoards from "./AllBoards";
 import Play from "./Play";
 
 function Body() {
+    const [boards, setBoards] = useState([])
+
+    useEffect(() => {
+        fetch('http://localhost:4000/boards')
+            .then(r => r.json())
+            .then(boards => setBoards(boards))
+    }, [])
+
     return (
         <div id="body">
             <Switch>
@@ -16,10 +24,10 @@ function Body() {
                 <UserBoards />
             </Route>
             <Route path="/all-boards" >
-                <AllBoards />
+                <AllBoards boards={boards}/>
             </Route>
             <Route path="/play">
-                <Play />
+                <Play boards={boards} />
             </Route>
             </Switch>
         </div>

@@ -1,16 +1,11 @@
 import React from 'react';
 
 function BingoBoard( { layout } ) {
-    const arr = []
-    for (let i = 0; i < 25; i ++) {
-        arr.push(i)
-    }
-
-    const nums = layout ? layout : arr
+    const layoutArr = layout.split(' ')
 
     return (
         <div className="grid-container">
-            {nums.map(num => <div className="grid-item" key={num} >{num}</div>)}
+            {layoutArr.map(num => <div className="grid-item" key={num} >{num}</div>)}
         </div>
     )
 }
