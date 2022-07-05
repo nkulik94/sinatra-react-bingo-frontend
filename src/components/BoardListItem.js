@@ -2,7 +2,7 @@ import React from 'react';
 import BingoBoard from './BingoBoard';
 import { Card, ListGroup } from 'react-bootstrap';
 
-function BoardListItem( { board, highScores } ) {
+function BoardListItem( { board, highScores, bgColor } ) {
     const layout = board.layout.split(' ')
 
     return (
@@ -10,7 +10,7 @@ function BoardListItem( { board, highScores } ) {
             <Card>
                 <Card.Title>Board Number {board.id}</Card.Title>
                 <Card.Body>
-                    <BingoBoard layout={layout} bgColor={['white']} />
+                    <BingoBoard layout={layout} bgColor={bgColor} />
                     <Card.Header>{highScores[0]}</Card.Header>
                     <ListGroup>
                         <ListGroup.Item>Fewest turns to full: {highScores[1][0]}</ListGroup.Item>

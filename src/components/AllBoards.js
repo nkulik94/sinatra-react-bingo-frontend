@@ -12,7 +12,7 @@ function AllBoards({ boards }) {
                 const xHigh = board.x_high_score ? board.x_high_score : 'incomplete'
                 const lineHigh = board.line_high_score ? board.line_high_score : 'incomplete'
                 const highScores = ['High Scores For This Board', [fullHigh, xHigh, lineHigh]]
-                return <BoardListItem board={board} highScores={highScores} key={board.id}/>
+                return <BoardListItem board={board} highScores={highScores} key={board.id} bgColor={['white']} />
             })}
             </div>
         </div>

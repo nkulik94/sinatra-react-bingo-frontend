@@ -33,12 +33,21 @@ function Play({ boards }) {
     
     if (!boardObj.board) return <p className="msg">Please <Link to="/all-boards">select a board</Link> or click <a href="#" onClick={handleRandomBoard} >here</a> to get a random board</p>
     console.log(boardObj.board)
+    const colors = []
+    for (let i = 0; i < 25; i++) {
+        colors.push('white')
+    }
+
+    if (boardObj.board.filled_spaces)  {
+        const filledSpaces = boardObj.board.filled_spaces.split(' ')
+        filledSpaces.map(num => colors[parseInt(num, 10)] = 'green')
+    }
     
     return (
         <div className="big-board">
             <Card>
                 <Card.Body>
-                    <BingoBoard layout={boardObj.board.board.layout.split(' ')} bgColor={'white'} />
+                    <BingoBoard layout={boardObj.board.board.layout.split(' ')} bgColor={colors} />
                 </Card.Body>
             </Card>
         </div>
