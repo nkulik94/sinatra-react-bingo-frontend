@@ -4,11 +4,13 @@ import CreateAccount from "./CreateAccount";
 import LoginForm from "./LoginForm";
 
 function LoginPage() {
-    const [form, setForm] = useState('logi')
+    const [loginForm, setForm] = useState(true)
 
     const [displayError, setError] = useState(false)
 
     const userObj = useContext(UserContext)
+
+    const toggleForm = () => setForm(!loginForm)
 
     function handleError(inputData, setFormData) {
         setFormData(inputData)
@@ -26,7 +28,7 @@ function LoginPage() {
 
     return (
         <div>
-            {form === 'login' ? <LoginForm handleSubmit={handleSubmit} displayError={displayError} /> : <CreateAccount handleSubmit={handleSubmit} displayError={displayError} />}
+            {loginForm ? <LoginForm handleSubmit={handleSubmit} displayError={displayError} toggleForm={toggleForm} /> : <CreateAccount handleSubmit={handleSubmit} displayError={displayError} toggleForm={toggleForm} />}
         </div>
     )
 }

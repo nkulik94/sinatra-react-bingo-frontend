@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 
-function LoginForm( { handleSubmit, displayError } ) {
+function LoginForm( { handleSubmit, displayError, toggleForm } ) {
     
     const [formData, setFormData] = useState({
         username: '',
@@ -51,6 +51,8 @@ function LoginForm( { handleSubmit, displayError } ) {
                 Log In
             </Button>
             {displayError ? <p>Sorry, the username or password do not match our records, please try again</p> : null}
+            <br/>
+            <p>Don't have an account? <a href="#" onClick={toggleForm}>Create one</a></p>
         </Form>
     )
 }

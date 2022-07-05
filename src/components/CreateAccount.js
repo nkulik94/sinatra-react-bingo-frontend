@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap'
 
-function CreateAccount( { handleSubmit, displayError } ) {
+function CreateAccount( { handleSubmit, displayError, toggleForm } ) {
     const [formData, setFormData] = useState({
         name: '',
         username: '',
@@ -65,6 +65,8 @@ function CreateAccount( { handleSubmit, displayError } ) {
                 Create Account
             </Button>
             {displayError ? <p>Sorry, that username already exists</p> : null}
+            <br/>
+            <p>Already have an account? <a href="#" onClick={toggleForm}>Sign in</a></p>
         </Form>
     )
 }
