@@ -24,16 +24,6 @@ function NavBar() {
             Home
         </NavLink>
         <NavLink
-        to="/my-boards"
-        exact
-        style={linkStyles}
-            activeStyle={{
-                borderBottom: '2px solid darkblue',
-            }}
-        >
-            My Boards
-        </NavLink>
-        <NavLink
         to="/all-boards"
         exact
         style={linkStyles}
@@ -42,6 +32,16 @@ function NavBar() {
             }}
         >
             Boards
+        </NavLink>
+        <NavLink
+        to="/my-boards"
+        exact
+        style={linkStyles}
+            activeStyle={{
+                borderBottom: '2px solid darkblue',
+            }}
+        >
+            My Boards
         </NavLink>
         <NavLink
         to="/play"

@@ -1,7 +1,8 @@
 import React from "react";
+import BingoBoard from "./BingoBoard";
 
 function Play() {
-    return <h1>Play</h1>
+    return <BingoBoard />
 }
 
 export default Play
