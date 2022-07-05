@@ -27,19 +27,31 @@ code {
 header {
   text-align: center;
   position: relative;
-  /* background-color: antiquewhite; */
   padding: 20px;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto;
-  width: 40%;
   margin: auto;
+  border: 1px solid black
 }
 
 .grid-item {
   text-align: center;
   padding: 15%;
   border: 1px solid black
+}
+
+.big-board .grid-container {
+  width: 40%;
+}
+
+.board-list {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 15px;
+  width: 90%;
+  margin: auto;
+  padding: 10px;
 }
