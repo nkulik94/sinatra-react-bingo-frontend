@@ -1,12 +1,12 @@
 import React from "react";
 import { UserProvider } from '../context/user';
-import LoginPage from "./LoginPage";
+import Body from "./Body";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
     return (
         <UserProvider>
-            <LoginPage />
+            <Body />
         </UserProvider>
     )
 }
