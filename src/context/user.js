@@ -16,7 +16,10 @@ function UserProvider({ children }) {
         fetch('http://localhost:4000/users', config)
             .then(r => r.json())
             .then(user => setUser(user))
-            .catch(handleError)
+            .catch(() => {
+                handleError()
+                setUser(null)
+            })
     }
     const currentUser = {
         user,
