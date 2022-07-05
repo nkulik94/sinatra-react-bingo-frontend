@@ -55,3 +55,8 @@ header {
   margin: auto;
   padding: 10px;
 }
+
+.login-msg {
+  width: fit-content;
+  margin: auto;
+}
