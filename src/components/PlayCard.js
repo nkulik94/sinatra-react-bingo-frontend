@@ -29,7 +29,6 @@ function PlayCard() {
         fetch(`http://localhost:4000/played-boards/${boardObj.board.id}`, config)
             .then(r => r.json())
             .then(board => {
-                console.log("board", board)
                 boardObj.setBoard(board)
                 const userBoards = userObj.userBoards.map(userBoard => {
                     if (board.id === userBoard.id) return board
@@ -37,6 +36,13 @@ function PlayCard() {
                 })
                 userObj.setBoards(userBoards)
             })
+    }
+
+    function handleClick() {
+        const filledSpaces = boardObj.board.filled_spaces
+        if (!filledSpaces || filledSpaces.split(' ').length < 25) {
+            handleNewNum()
+        }
     }
 
     return (
@@ -49,7 +55,7 @@ function PlayCard() {
                     <br/>
                     {unusedNums}
                 </Card.Text>
-                <Button onClick={handleNewNum} >Pick a number</Button>
+                <Button onClick={handleClick} >Pick a number</Button>
             </Card.Body>
         </Card>
     )

@@ -7,6 +7,8 @@ import PlayCard from "./PlayCard";
 
 function Play({ boards, colors }) {
     const user = useContext(UserContext).user
+    const userBoards = useContext(UserContext).userBoards
+    const setUserBoards = useContext(UserContext).setBoards
     
     // boardObj contains the state for the current board (boardObj.board) and the setter function (boardObj.setBoard)
     const boardObj = useContext(BoardContext)
@@ -28,7 +30,10 @@ function Play({ boards, colors }) {
         }
         fetch('http://localhost:4000/played-boards', config)
             .then(r => r.json())
-            .then(board => boardObj.setBoard(board))
+            .then(board => {
+                boardObj.setBoard(board)
+                setUserBoards([...userBoards, board])
+            })
     }
     
     if (!boardObj.board) return <p className="msg">Please <Link to="/all-boards">select a board</Link> or click <a href="#" onClick={handleRandomBoard} >here</a> to get a random board</p>
@@ -41,7 +46,6 @@ function Play({ boards, colors }) {
     return (
         <div className="play">
             <div className="big-board">
-                {console.log(boardObj.board.board)}
                 <BoardListItem board={boardObj.board.board} highScores={highScores} bgColor={colors(boardObj.board)} />
             </div>
             <PlayCard />
