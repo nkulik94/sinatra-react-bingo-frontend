@@ -45,12 +45,18 @@ function PlayCard() {
         }
     }
 
+    const turnCount = boardObj.board.turn_count ? boardObj.board.turn_count : 0
+
     return (
         <Card style={{gridRowEnd: 'span 1'}}>
             <Card.Title>Last Number:</Card.Title>
             <Card.Title className="current-num">{currentNum}</Card.Title>
             <Card.Body>
                 <Card.Text>
+                    <strong>Total turns:</strong>
+                    <br/>
+                    {turnCount}
+                    <br/>
                     <strong>Remaining numbers:</strong>
                     <br/>
                     {unusedNums}
