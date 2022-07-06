@@ -47,11 +47,16 @@ function UserBoardBtns({ board }) {
     }
 
     return (
+        <>
         <ButtonGroup >
             <Button style={{fontSize: 'small'}} disabled={filledSpaces.length === 25} onClick={handleContinue} >Continue Playing</Button>
             <Button style={{fontSize: 'small'}} onClick={handlePlayAgain} >Play Again</Button>
             <Button style={{fontSize: 'small'}} variant="danger" >Reset</Button>
         </ButtonGroup>
+        <br/>
+        <br/>
+        <Button variant="danger" >Delete</Button>
+        </>
     )
 }
 
