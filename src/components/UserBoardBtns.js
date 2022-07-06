@@ -10,6 +10,23 @@ function UserBoardBtns({ board }) {
     const boardObj = useContext(BoardContext)
     const userObj = useContext(UserContext)
 
+    function handleNewBoard(userId, boardId, callback) {
+        const config = {
+            method: 'POST',
+            headers: {
+                "Content-type": "application/json"
+            },
+            body: JSON.stringify({
+                player_id: userId,
+                board_id: boardId
+            })
+        }
+
+        fetch('http://localhost:4000/played-boards', config)
+            .then(r => r.json())
+            .then(newBoard => callback(newBoard))
+    }
+
     function handleContinue() {
         boardObj.setBoard(board)
         history.push('/play')
@@ -19,24 +36,14 @@ function UserBoardBtns({ board }) {
         const userBoards = userObj.userBoards
         const setUserBoards = userObj.setBoards
         const userId = userObj.user.id
-        const config = {
-            method: 'POST',
-            headers: {
-                "Content-type": "application/json"
-            },
-            body: JSON.stringify({
-                player_id: userId,
-                board_id: board.board_id
-            })
+
+        const callback = (newBoard) => {
+            boardObj.setBoard(newBoard)
+            setUserBoards([...userBoards, newBoard])
+            history.push('/play')
         }
 
-        fetch('http://localhost:4000/played-boards', config)
-            .then(r => r.json())
-            .then(newBoard => {
-                boardObj.setBoard(newBoard)
-                setUserBoards([...userBoards, newBoard])
-                history.push('/play')
-            })
+        handleNewBoard(userId, board.board_id, callback)
     }
 
     return (
