@@ -13,9 +13,9 @@ function BoardListItem( { board, highScores, bgColor } ) {
                     <BingoBoard layout={layout} bgColor={bgColor} />
                     <Card.Header>{highScores[0]}</Card.Header>
                     <ListGroup>
-                        <ListGroup.Item>Fewest turns to full: {highScores[1][0]}</ListGroup.Item>
-                        <ListGroup.Item>Fewest turns to X: {highScores[1][1]}</ListGroup.Item>
-                        <ListGroup.Item>Fewest turns to line: {highScores[1][2]}</ListGroup.Item>
+                        <ListGroup.Item>Turns to full: {highScores[1][0]}</ListGroup.Item>
+                        <ListGroup.Item>Turns to X: {highScores[1][1]}</ListGroup.Item>
+                        <ListGroup.Item>Turns to line: {highScores[1][2]}</ListGroup.Item>
                     </ListGroup>
                 </Card.Body>
             </Card>

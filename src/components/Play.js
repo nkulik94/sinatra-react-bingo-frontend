@@ -1,11 +1,10 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from '../context/user';
 import { BoardContext } from "../context/board";
-import { Card } from 'react-bootstrap'
-import BingoBoard from "./BingoBoard";
+import BoardListItem from "./BoardListItem";
 
-function Play({ boards }) {
+function Play({ boards, colors }) {
     const user = useContext(UserContext).user
     
     // boardObj contains the state for the current board (boardObj.board) and the setter function (boardObj.setBoard)
@@ -32,24 +31,15 @@ function Play({ boards }) {
     }
     
     if (!boardObj.board) return <p className="msg">Please <Link to="/all-boards">select a board</Link> or click <a href="#" onClick={handleRandomBoard} >here</a> to get a random board</p>
-    console.log(boardObj.board)
-    const colors = []
-    for (let i = 0; i < 25; i++) {
-        colors.push('white')
-    }
 
-    if (boardObj.board.filled_spaces)  {
-        const filledSpaces = boardObj.board.filled_spaces.split(' ')
-        filledSpaces.map(num => colors[parseInt(num, 10)] = 'green')
-    }
+    const fullHigh = boardObj.board.turns_to_full ? boardObj.board.turns_to_full : 'incomplete'
+    const xHigh = boardObj.board.turns_to_x ? boardObj.board.turns_to_x : 'incomplete'
+    const lineHigh = boardObj.board.turns_to_line ? boardObj.board.turns_to_line : 'incomplete'
+    const highScores = ['My Scores', [fullHigh, xHigh, lineHigh]]
     
     return (
         <div className="big-board">
-            <Card>
-                <Card.Body>
-                    <BingoBoard layout={boardObj.board.board.layout.split(' ')} bgColor={colors} />
-                </Card.Body>
-            </Card>
+            <BoardListItem board={boardObj.board.board} highScores={highScores} bgColor={colors(boardObj.board)} />
         </div>
     )
 }
