@@ -1,6 +1,6 @@
 import React from 'react';
 
-function BingoBoard( { layout, bgColor } ) {
+function BingoBoard( { layout, bgColor = ['white'] } ) {
 
     return (
         <div className="grid-container">

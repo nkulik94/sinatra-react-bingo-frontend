@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from '../context/user';
 import { BoardContext } from "../context/board";
 import BoardListItem from "./BoardListItem";
+import PlayCard from "./PlayCard";
 
 function Play({ boards, colors }) {
     const user = useContext(UserContext).user
@@ -38,8 +39,11 @@ function Play({ boards, colors }) {
     const highScores = ['My Scores', [fullHigh, xHigh, lineHigh]]
     
     return (
-        <div className="big-board">
-            <BoardListItem board={boardObj.board.board} highScores={highScores} bgColor={colors(boardObj.board)} />
+        <div className="play">
+            <div className="big-board">
+                <BoardListItem board={boardObj.board.board} highScores={highScores} bgColor={colors(boardObj.board)} />
+            </div>
+            <PlayCard />
         </div>
     )
 }

@@ -44,8 +44,7 @@ header {
 }
 
 .big-board {
-  width: 40%;
-  margin: auto;
+  text-align: center;
 }
 
 .board-list {
@@ -60,4 +59,20 @@ header {
 .msg {
   width: fit-content;
   margin: auto;
+}
+
+.play {
+  display: grid;
+  grid-template-columns: auto auto;
+  gap: 15px;
+  width: 90%;
+  margin: auto;
+}
+
+.current-num {
+  font-size: large;
+  border: 1px solid black;
+  width: fit-content;
+  margin: auto;
+  padding: 5%;
 }
