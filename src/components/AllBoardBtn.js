@@ -11,7 +11,7 @@ function AllBoardBtn({ boardId }) {
 
     function handleClick() {
         const userId = userObj.user.id
-        const userBoards = userObj.boards
+        const userBoards = userObj.userBoards
         const setUserBoards = userObj.setBoards
         const config = {
             method: 'POST',

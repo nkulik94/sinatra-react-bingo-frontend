@@ -17,7 +17,16 @@ function UserBoards({ colors }) {
                 const xHigh = board.turns_to_x ? board.turns_to_x : 'incomplete'
                 const lineHigh = board.turns_to_line ? board.turns_to_line : 'incomplete'
                 const highScores = ['My Scores', [fullHigh, xHigh, lineHigh]]
-                return <BoardListItem board={board.board} highScores={highScores} key={board.id} bgColor={colors(board)} />
+                return (
+                    <BoardListItem
+                        board={board.board}
+                        highScores={highScores}
+                        key={board.id}
+                        bgColor={colors(board)}
+                        playBoard={board}
+                        hasBtn={'user'}
+                    />
+                )
             })}
             </div>
         </div>
