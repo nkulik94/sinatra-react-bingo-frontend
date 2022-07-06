@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Route, Switch } from "react-router-dom";
 import { BoardContext } from "../context/board";
+import { UserContext } from "../context/user";
 import Home from "./Home";
 import UserBoards from "./UserBoards";
 import AllBoards from "./AllBoards";
