@@ -41,6 +41,7 @@ function Play({ boards, colors }) {
     return (
         <div className="play">
             <div className="big-board">
+                {console.log(boardObj.board.board)}
                 <BoardListItem board={boardObj.board.board} highScores={highScores} bgColor={colors(boardObj.board)} />
             </div>
             <PlayCard />
