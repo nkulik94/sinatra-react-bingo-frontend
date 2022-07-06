@@ -5,8 +5,8 @@ import BoardListItem from "./BoardListItem";
 
 function UserBoards({ colors }) {
     const user = useContext(UserContext).user
+    const boards = useContext(UserContext).userBoards
     if (!user) return <p className="msg">Please <Link to='/'>log in</Link> to view your boards</p>
-    const boards = user.played_boards
 
     return (
         <div style={{textAlign: 'center'}}>

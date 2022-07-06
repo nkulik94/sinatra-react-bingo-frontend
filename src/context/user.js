@@ -4,6 +4,7 @@ const UserContext = React.createContext();
 
 function UserProvider({ children }) {
     const [user, setUser] = useState(null)
+    const [userBoards, setBoards] = useState(null)
     
     function getAndSetUser(body, handleError) {
         const config = {
@@ -15,7 +16,10 @@ function UserProvider({ children }) {
         }
         fetch('http://localhost:4000/users', config)
             .then(r => r.json())
-            .then(user => setUser(user))
+            .then(user => {
+                setUser(user)
+                setBoards(user.played_boards)
+            })
             .catch(() => {
                 handleError()
                 setUser(null)
@@ -24,7 +28,9 @@ function UserProvider({ children }) {
     const currentUser = {
         user,
         setUser,
-        getAndSetUser
+        getAndSetUser,
+        userBoards,
+        setBoards
     }
 
     return <UserContext.Provider value={currentUser}>{children}</UserContext.Provider>;
